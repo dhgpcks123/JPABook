@@ -10,6 +10,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+//@Table(name="user") 이름 바꿀 수 있어. default로 아무것도 안하면?
+//springboot가 SpringPhysicalNamingStrategy 케멀 케이스 -> 언더스코어
+//점 -> 언더스코어 orderDate -> order_date
+//대문자 -> 소문자
+//박꾸고 싶으면 spring.jpa.hiberante.naming.physical-strategy가 있는데 바꿀 수 있음
+//회사에 원하는 방식으로 네이밍 할 수 있겠지. 설정 바꿔서
+
+// 네이밍 strategy -/ 논리명 생성 -> 명시적으로 컬럼, 테이블 명 안 적으면 어떻게?,
+// 물리명 적용 내가 적은 것도 다 포함. 예를 들어 @Column(name ="member_id") 에도 앞에 붙여줌
 @Getter @Setter
 public class Member {
 
