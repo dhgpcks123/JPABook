@@ -17,14 +17,23 @@ public class Order {
     @Column(name="order_id")
     private Long id;
 
-    @ManyToOne
+//    @ManyToOne(fetch = FetchType.EAGER)
+// ManyToOne은 무조건 (fetch=FetchType.LAZY)줘야함
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="member_id")
     private Member member;
 
-    @OneToMany(mappedBy = "order")
+    //JPAL select o from order o; -> SQL select * from order (EAGER 무시)
+    //order100개 조회 보니까 member EAGER로 되어있네. 100번 단방향 쿼리 날라감
+    //n+1문제 order날라가는 쿼리 나오고 결과 + n개 더 가져오니까. n+1문제
+    //JPQL쓸 때 N+1문제가 많이 발생한다.
+    //다 LAZY로 바꿔서 쓰셈 한방 쿼리 쓰고 싶어!? fetch join또는 엔티티 그래프 기능(최근에 나옴) 사용
+    //@XToOne(ManyToOne, 기본이 EAGER임... OneToMany는 기본이 LAZY임...)
+
+//    @OneToMany(mappedBy = "order", fetch=FetchType.LAZY) default여서 안 건드려도 됨.
     private List<OrderItem> orderItems = new ArrayList<>();
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="delivery_id")
     private Delivery delivery;
 
