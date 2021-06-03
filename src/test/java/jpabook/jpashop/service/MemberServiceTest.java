@@ -35,10 +35,25 @@ class MemberServiceTest {
     @Test
     public void 중복_회원_예외() throws Exception{
         //given
+        Member member1 = new Member();
+        member1.setName("kim");
 
+        Member member2 = new Member();
+        member2.setName("kim");
         //when
-
-        //then
-
+        memberService.join(member1);
+//        try{
+//        여기에 assertThrows제공 해줌
+//        }catch(IllegalStateException e){
+//           return;
+//        }
+        //이거 모르겠네... 문법이 Junit5...
     }
+
+    //메모리DB띄워서 테스트하게 해주는... 스프링부트는 그런 기능 제공해줌.
+    //허허;;
+    //h2에서도 그거 제공해줘서 test폴더의 resources만들어서 yaml넣어서
+    //어쨋든 in memory에서 쓸 수 있게 도와주거든? jdbc:h2:mem:test
+    //근데 스프링부트는 심지어 그것도 다 없다? 그냥 없으면 메모리에 띄움; 오호
+    //스프링부트는 기본적으로 create-drop으로 돌아감.
 }
