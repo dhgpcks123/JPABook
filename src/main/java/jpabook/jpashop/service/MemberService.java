@@ -15,20 +15,7 @@ import java.util.List;
 public class MemberService {
 
     private final MemberRepository memberRepository;
-    /*
-    @Autowired
-    private MemberRepository memberRepository;
-    // 필드 주입 많이 쓰는데- 단점이 많아... 회사에서도 이거 쓰더라.
-    */
-    /*
-    // setter 주입 : 이걸로 쓰면 test할 때 쓰기 좋아
-    // 단점은? 런타임 때 여기 접근해서 바꿀 수 있음. 보통 근데.. 스프링 올리고 이거 바꿀 일 없잖아. 동작하는 와중에 바꾸면;; 에바
-    @Autowired
-    public void setMemberRepository(MemberRepository memberRepository) {
-        this.memberRepository = memberRepository;
-    }
-     */
-    // -> 권장 - 생성자 주입
+
     @Autowired
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
