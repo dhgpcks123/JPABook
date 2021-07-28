@@ -26,6 +26,13 @@ public class OrderItem {
 
     private int count; //주문 수량
 
+    protected OrderItem(){
+    }
+    //lombok으로 죽일 수도 있음
+    //@NoArgsConstructor(access= AccessLevel.protected)
+
+
+
     // == 생성 메서드 ==//
     public static OrderItem createOrderItem(Item item, int orderPrice, int count){
         OrderItem orderItem = new OrderItem();

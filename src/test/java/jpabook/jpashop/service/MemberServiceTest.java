@@ -44,7 +44,7 @@ class MemberServiceTest {
         memberService.join(member1);
 //        try{
 //        여기에 assertThrows제공 해줌
-//        }catch(IllegalStateException e){
+//        }catch(IllegalStateException e){F
 //           return;
 //        }
         //이거 모르겠네... 문법이 Junit5...
